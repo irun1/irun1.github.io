@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Beta
+comment1.params=
+comment1.target=void\ main()
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=files
+comment3.target=java.io.File[]\ filter(java.io.File[])
+comment4.params=page
+comment4.target=void\ display(int)
+comment5.params=e
+comment5.target=void\ mouseClicked(java.awt.event.MouseEvent)
+numComments=6
