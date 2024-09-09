@@ -57,11 +57,6 @@ button:hover
 }
 @media(max-width: 600px)
 {
-	#download
-	{
-		display: none;
-		max-width: 95%;
-	}
 	.container
 	{
 		padding: 5px;
