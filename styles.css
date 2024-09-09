@@ -62,4 +62,8 @@ button:hover
 		padding: 5px;
 		max-width: 95%;
 	}
+	body
+	{
+		height: 50vh;
+	}
 }
