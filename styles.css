@@ -62,4 +62,9 @@ button:hover
 		display: none;
 		max-width: 95%;
 	}
+	.container
+	{
+		padding: 5px;
+		max-width: 95%;
+	}
 }
