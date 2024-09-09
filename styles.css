@@ -62,12 +62,8 @@ button:hover
 		padding: 5px;
 		max-width: 95%;
 	}
-	body
-	{
-		height: 50vh;
-	}
 	#form
 	{
-		margin-top: 5px;
+		margin-top: 50px;
 	}
 }
