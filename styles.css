@@ -7,6 +7,7 @@ body
 	justify-content: center;
 	align-items: center;
 	height: 100vh;
+	overflow: hidden;
 }
 .container
 {
@@ -59,12 +60,8 @@ button:hover
 {
 	.container
 	{
-		padding: 10px;
-		max-width: 90%;
-	}
-	body
-	{
-		height: 75vh;
+		padding: 15px;
+		max-width: 85%;
 	}
 	#form
 	{
