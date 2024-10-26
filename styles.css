@@ -2,55 +2,44 @@ body
 {
 	font-family: 'Arial', sans-serif;
 	background-color: #f0f8ff;
-	margin: 0;
 	display: flex;
 	justify-content: center;
-	align-items: center;
-	height: 75vh;
 	overflow: hidden;
+	align-items: center;
+	height: 100vh;
+	color: #222;
+	font-size: 1.3rem;
 }
 .container
 {
 	text-align: center;
 	background-color: #ffffff;
-	padding: 40px;
-	max-width: 43%;
-	height: auto;
-	word-wrap: break-word;
-	overflow-wrap: break-word;
+	padding: 12px 40px 0 40px;
+	max-width: 50%;
 	border-radius: 10px;
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	box-shadow: 0px 0px 10px 10px rgba(0, 0, 0, 0.3);
 }
 h1
 {
 	color: #333;
 	font-size: 2.5rem;
-	margin-top: 12px;
+	text-align: center;
 }
-#instruction
+#instruction, #name
 {
-	font-size: 1.2rem;
-	color: #666;
-	margin-bottom: 30px;
-}
-#name
-{
-	font-size: 1.2rem;
-	color: #444;
-	margin-bottom: 0px;
+	padding-top: 17px;
 }
 button
 {
 	background-color: #4CAF50;
 	color: white;
-	padding: 15px 30px;
-	margin-left: 15px;
-	margin-right: 15px;
-	font-size: 1.1rem;
+	padding: 17px 30px;
+	margin: 2.5px;
+	font-size: 1.3rem;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	transition: background-color 0.3s ease;
+	transition: 0.3s;
 }
 button:hover
 {
@@ -67,4 +56,76 @@ button:hover
 	{
 		margin-top: 5px;
 	}
+}
+#help
+{
+	padding-top: 17px;
+	margin-bottom: 12px;
+	font-size: 1.1rem;
+	color: blue;
+	cursor: pointer;
+}
+.modal
+{
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgba(0, 0, 0, 0.4);
+}
+.modal-content
+{
+	background-color: #f0f8ff;
+	margin: 40px 8% 40px 8%;
+	padding: 20px;
+	width: 80%;
+	border-radius: 10px;
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+	text-align: left;
+}
+.close
+{
+	color: #333;
+	float: right;
+	font-size: 3rem;
+	cursor: pointer;
+}
+.close:hover
+{
+	color: red;
+	cursor: pointer;
+}
+.input-field
+{
+	width: 93%;
+	padding: 12px;
+	margin: 7.5px 0 7.5px 0 ;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-size: 1.2rem;
+}
+.hint-text
+{
+	font-size: 0.9rem;
+	color: #666;
+}
+.button
+{
+	width: 100%;
+	background-color: #4CAF50;
+	color: white;
+	padding: 17px;
+	margin: 17px 0;
+	font-size: 1.3rem;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+.button:hover
+{
+	background-color: #45a049;
 }
