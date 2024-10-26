@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="description" content="Login to download Infinity Run.">
+    <meta name="keywords" content="Infinity Run, game, running game, IRun, Ashirvaad, Ashirvaad Verma">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Ashirvaad Verma">
+    <title>
+      Login to download Infinity Run
+    </title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-6RPYYH5EDD"></script>
+    <script>
+      window.dataLayer=window.dataLayer || [];
+      function gtag()
+      {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-6RPYYH5EDD');
+    </script>
+    <link rel="icon" type="image/png" sizes="64x64" href="Logo.png">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1>Login</h1>
+      <p>Enter the email-id and password from the hint below for downloading Infinity Run.</p>
+      <form id="loginForm">
+        <input type="email" id="email" name="email" placeholder="Email-id" required class="input-field">
+        <input type="password" id="password" name="password" placeholder="Password" required class="input-field">
+        <p class="hint-text">
+          1. If you know the programming language in which this game is made, then the email-id is (Python -> <b>python@gmail.com</b>).<br>
+          2. If you know my or my joint family members' name then the email-id is (John Sebastian -> <b>john@gmail.com</b>).<br>
+          3. If you know the school name in which I passed class X, then the email-id is (St. Peter's School -> <b>peter@gmail.com</b>).<br>
+          4. The password for all email-ids is (xyz@gmail.com -> <b>xyz2024</b>).
+        </p>
+        <button type="submit" id="loginButton" class="button">Login</button>
+      </form>
+      <p id="errorMessage" style="color: red; display: none;"></p>
+    </div>
+    <script type="module">
+      import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+      import {getAuth, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+      const firebaseConfig=
+      {
+        apiKey: "AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
+        authDomain: "infinity-run-1.firebaseapp.com",
+        projectId: "infinity-run-1",
+        storageBucket: "infinity-run-1.appspot.com",
+        messagingSenderId: "424611937147",
+        appId: "1:424611937147:web:e49291921391b5842c1bde",
+        measurementId: "G-WZ96Y9NC7T"
+      };
+      const app=initializeApp(firebaseConfig);
+      const auth=getAuth(app);
+      document.getElementById('email').focus();
+      document.getElementById('loginForm').addEventListener('submit', (event)=>
+        {
+          event.preventDefault();
+          const email=document.getElementById('email').value;
+          const password=document.getElementById('password').value;
+          signInWithEmailAndPassword(auth, email, password)
+            .then(()=>
+              {
+                const redirectUrl=localStorage.getItem('redirectAfterLogin') || 'index.html';
+                localStorage.removeItem('redirectAfterLogin');
+                window.location.href=redirectUrl;
+              })
+            .catch((error)=>
+              {
+                const errorMessageElement=document.getElementById('errorMessage');
+                errorMessageElement.innerText="The entered email-id and password combination is incorrect.";
+                errorMessageElement.style.display="block";
+                localStorage.removeItem("shouldDownload");
+              });
+        });
+      document.getElementById("email").addEventListener("keydown", (event)=>
+        {
+          if(event.key==="Enter")
+          {
+            event.preventDefault();
+            document.getElementById("password").focus();
+          }
+        });
+      document.getElementById("password").addEventListener("keydown", (event)=>
+        {
+          if(event.key==="Enter")
+          {
+            event.preventDefault();
+            document.getElementById("loginButton").click();
+          }
+        });
+    </script>
+  </body>
+</html>
