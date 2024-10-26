@@ -1,33 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-	<meta name="description" content="Play a simple but feature-rich endless running game developed by Ashirvaad Verma.">
-	<meta name="keywords" content="Infinity Run, game, running game, IRun, Ashirvaad, Ashirvaad Verma">
-	<meta name="robots" content="index, follow">
-	<meta name="author" content="Ashirvaad Verma">
-	<title>Download Infinity Run - an endless running game</title>
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RPYYH5EDD"></script>
-	<script>
-		window.dataLayer=window.dataLayer || [];
-		function gtag()
-		{
-			dataLayer.push(arguments);
-		}
-		gtag('js', new Date());
-		gtag('config', 'G-6RPYYH5EDD');
-	</script>
-	<link rel="stylesheet" href="styles.css">
-	<link rel="canonical" href="https://irun1.github.io/ir">
-</head>
-<body>
-	<div class="container">
-		<h1>Infinity Run</h1>
-		<p id="instruction">Click Download to get Infinity Run or Submit File to request the addition of more profiles to the game.</p>
-		<a href="Infinity Run.zip"><button id="download">Download V1.3.0</button></a>
-		<a target="_blank" href="https://forms.zohopublic.in/ashirvaadverma2000/form/FileSubmission/formperma/O4LBs_e6Jyel78U3cqrfYIUGPVNdZorCuhfngBTcv5A"><button id="form">Submit File</button></a><br>
-		<p id="name">Last updated: 22.9.2024 2:27 AM<br>Designed and managed by <u>Ashirvaad Verma</u></p>
-	</div>
-</body>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="description" content="Play a simple but feature-rich endless running game developed by Ashirvaad Verma.">
+		<meta name="keywords" content="Infinity Run, game, running game, IRun, Ashirvaad, Ashirvaad Verma">
+		<meta name="robots" content="index, follow">
+		<meta name="author" content="Ashirvaad Verma">
+		<title>Download Infinity Run - an endless running game</title>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6RPYYH5EDD"></script>
+		<script>
+			window.dataLayer=window.dataLayer || [];
+			function gtag()
+			{
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-6RPYYH5EDD');
+		</script>
+		<link rel="icon" type="image/png" sizes="64x64" href="Logo.png">
+		<link rel="stylesheet" href="styles.css">
+		<script type="module">
+			import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+			import {getAuth, onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+			import {getAnalytics} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-analytics.js";
+			const firebaseConfig=
+			{
+				apiKey: "AIzaSyA8aXyZQejDtv_4ErK8o435TCTWsTjebcw",
+				authDomain: "infinity-run-1.firebaseapp.com",
+				projectId: "infinity-run-1",
+				storageBucket: "infinity-run-1.appspot.com",
+				messagingSenderId: "424611937147",
+				appId: "1:424611937147:web:e49291921391b5842c1bde",
+				measurementId: "G-WZ96Y9NC7T"
+			};
+			const app=initializeApp(firebaseConfig);
+			const auth=getAuth(app);
+			const analytics=getAnalytics(app);
+			window.onload=function()
+			{
+				document.getElementById("download").addEventListener("click", (e)=>
+					{
+						e.preventDefault();
+						localStorage.setItem("shouldDownload", "true");
+						onAuthStateChanged(auth, (user)=>
+							{
+								if(user)
+								{
+									startDownload();
+								}
+								else
+								{
+									localStorage.setItem("redirectAfterLogin", window.location.href);
+									window.location.href="login.html";
+								}
+							});
+					});
+				onAuthStateChanged(auth, (user)=>
+					{
+						if(user && localStorage.getItem("shouldDownload")==="true")
+						{
+							startDownload();
+							localStorage.removeItem("shouldDownload");
+						}
+						else
+						{
+							localStorage.removeItem("shouldDownload");
+						}
+					});
+			};
+			function startDownload()
+			{
+				const link=document.createElement("a");
+				link.href="Infinity Run.zip";
+				link.download="Infinity Run.zip";
+				document.body.appendChild(link);
+				link.click();
+				document.body.removeChild(link);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Infinity Run</h1>
+			<p id="instruction">Click Download to get Infinity Run, or click Submit to provide feedback or to add your profiles to the game.</p>
+			<button id="download">Download V1.3.0 (8.63MB)</button>
+			<a target="_blank" href="https://forms.zohopublic.in/ashirvaadverma2000/form/FileSubmission/formperma/O4LBs_e6Jyel78U3cqrfYIUGPVNdZorCuhfngBTcv5A">
+				<button id="form">Submit Your Feedback/File</button>
+			</a><be>
+			<p id="name">Last updated: 26.10.2024 7:15 PM<br>Designed and managed by <u>Ashirvaad Verma</u></p>
+				<span onclick="openHelp()"><p id="help">Get help</p></span>
+				<div id="helpModal" class="modal">
+					<div class="modal-content">
+						<span class="close" onclick="closeHelp()">&times;</span><be>
+						<h1>Help</h1><hr>
+							<h2>How to download and install Infinity Run?</h2>
+							<instructions><ol>
+								<li>Click on the Download button.</li>
+								<li>After downloading, open File Explorer and navigate to the downloaded zip file.</li>
+								<li>Right-click on the selected zip file.</li>
+								<li>Select Extract All...</li>
+								<li>Click Extract.</li>
+								<li>Close File Explorer and open BlueJ.</li>
+								<li>If you do not have BlueJ or want to update it, visit <a target="_blank" href="bluej.org">bluej.org</a>.</li>
+								<li>Click on Project.</li>
+								<li>Select Open Project...</li>
+								<li>Choose the Infinity Run folder from where you extracted the zip file.</li>
+								<li>Click Select Folder.</li>
+								<li>You have successfully downloaded and installed Infinity Run on your device. Read the README file and start enjoying the game.</li>
+							</ol></instructions><br>
+							<h2>How to update Infinity Run?</h2>
+							<instructions><ol>
+								<li>Check if there is a new version of Infinity Run available by comparing the version numbers from this website and the README file of your installed game.</li>
+								<li>If there is a new version available, delete all files of Infinity Run from your device.</li>
+								<li>Click on the Download button.</li>
+								<li>After downloading, open File Explorer and navigate to the downloaded zip file.</li>
+								<li>Right-click on the selected zip file.</li>
+								<li>Select Extract All...</li>
+								<li>Click Extract.</li>
+								<li>Close File Explorer and open BlueJ.</li>
+								<li>You have successfully updated Infinity Run on your device. Read the README file and start enjoying the updated game.</li>
+							</ol></instructions><br>
+							<h2>How to add new profiles to the main game?</h2>
+							<instructions><ol>
+								<li>To add your new profiles to the main game to showcase your highscore or to get mentioned in the game, you can click on the Submit File button.</li>
+								<li>Fill out the form.</li>
+								<li>To upload the file, click on the Upload File button in the form.</li>
+								<li>Select the Infinity Run.txt file.</li>
+								<li>Click Select and submit the form.</li>
+								<li>Your new profiles will be added to the main game within a few hours.</li>
+							</ol></instructions><br>
+							<h2>How to give feedback or report any bugs?</h2>
+							<instructions><ol>
+								<li>For any feedback or issue, you can reach out to me by clicking on the Submit File button.</li>
+							</ol></instructions>
+					</div>
+				</div>
+		</div>
+		<script>
+			function openHelp()
+			{
+				document.getElementById("helpModal").style.display="block";
+			}
+			function closeHelp()
+			{
+				document.getElementById("helpModal").style.display="none";
+			}
+			window.onclick=function(event)
+			{
+				var modal=document.getElementById("helpModal");
+				if(event.target==modal)
+				{
+					modal.style.display="none";
+				}
+			}
+		</script>
+	</body>
 </html>
