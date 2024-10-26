@@ -45,22 +45,8 @@ button:hover
 {
 	background-color: #45a049;
 }
-@media(max-width: 600px)
-{
-	.container
-	{
-		padding: 15px;
-		max-width: 85%;
-	}
-	#form
-	{
-		margin-top: 5px;
-	}
-}
 #help
 {
-	padding-top: 17px;
-	margin-bottom: 12px;
 	font-size: 1.1rem;
 	color: blue;
 	cursor: pointer;
@@ -75,6 +61,7 @@ button:hover
 	height: 100%;
 	overflow: auto;
 	background-color: rgba(0, 0, 0, 0.4);
+	overflow-x: hidden;
 }
 .modal-content
 {
@@ -128,4 +115,21 @@ button:hover
 .button:hover
 {
 	background-color: #45a049;
+}
+@media(max-width: 600px)
+{
+	.container
+	{
+		padding: 15px;
+		max-width: 85%;
+	}
+	#form
+	{
+		margin-top: 5px;
+	}
+	.modal-content
+	{
+		margin: 5px;
+		width: 88%;
+	}
 }
