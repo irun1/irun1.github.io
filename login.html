@@ -39,6 +39,7 @@
         <button type="submit" id="loginButton" class="button">Login</button>
       </form>
       <p id="errorMessage" style="color: red; display: none;"></p>
+      <p id="extraMessage" style="color: blue; display: none;">If you don't know the password, you can download Infinity Run from <a href="https://ashirvaad.itch.io/infinity-run" target="_blank" style="color: blue;">itch.io</a></p>
     </div>
     <script type="module">
       import {initializeApp} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
@@ -71,8 +72,10 @@
             .catch((error)=>
               {
                 const errorMessageElement=document.getElementById('errorMessage');
+                const extraMessageElement=document.getElementById('extraMessage');
                 errorMessageElement.innerText="The entered email-id and password combination is incorrect.";
                 errorMessageElement.style.display="block";
+                extraMessageElement.style.display="block";
                 localStorage.removeItem("shouldDownload");
               });
         });
